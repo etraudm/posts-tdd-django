@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), env('ROOT_FOLDER'), "posts_files")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), env('ROOT_FOLDER'), "staticfiles")
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), env('ROOT_FOLDER'), "media")
 
