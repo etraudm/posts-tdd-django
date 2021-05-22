@@ -8,6 +8,7 @@ django = "*"
 pylint = "*"
 django-environ = "*"
 gunicorn = "*"
+selenium = "*"
 
 [dev-packages]
 
