@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     APP_DEBUG=(bool, False),
     SSL_REDIRECT=(bool, False),
-    ROOT_FOLDER='posts_files'
+    ROOT_FOLDER=(str, 'posts_files')
 )
 
 try:
