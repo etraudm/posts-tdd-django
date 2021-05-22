@@ -22,4 +22,4 @@ class PostsTestCase(LiveServerTestCase):
         self.browser.quit()
 
     def test_should_open_chrome_window(self):
-        self.browser.get(self.live_server_ur)
+        self.browser.get(self.live_server_url)
