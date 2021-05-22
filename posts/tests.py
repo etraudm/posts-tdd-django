@@ -13,7 +13,8 @@ class PostsTestCase(LiveServerTestCase):
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
         self.browser = webdriver.Chrome(
-            executable_path=os.path.join(Path(__file__).resolve().parent.parent, 'utils/chromedriver.exe'),
+            # executable_path=os.path.join(Path(__file__).resolve().parent.parent, 'utils/chromedriver.exe'),
+            executable_path='/usr/local/bin/chromedriver',
             options=options)
 
     def tearDown(self):
