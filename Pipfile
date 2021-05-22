@@ -10,6 +10,9 @@ django-environ = "*"
 gunicorn = "*"
 selenium = "*"
 redgreenunittest = "*"
+djangorestframework = "*"
+django-oauth-toolkit = "*"
+pillow = "*"
 
 [dev-packages]
 
