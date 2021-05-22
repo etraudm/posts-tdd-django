@@ -21,7 +21,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - env:
+      env:
         ROOT_FOLDER: posts_files
         APP_DEBUG: on
         SSL_REDIRECT: off
