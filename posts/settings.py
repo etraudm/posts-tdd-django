@@ -137,3 +137,5 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), env('ROOT_FOLDER'), "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SECURE_SSL_REDIRECT = env('SSL_REDIRECT')
+
+TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"
