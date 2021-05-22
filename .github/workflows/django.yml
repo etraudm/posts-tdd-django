@@ -42,10 +42,12 @@ jobs:
         ROOT_FOLDER: posts_files
         APP_DEBUG: on
         SSL_REDIRECT: off
+        CHROME_DRIVER: /usr/local/bin/chromedriver
     - name: Run Tests
       env:
         ROOT_FOLDER: posts_files
         APP_DEBUG: on
         SSL_REDIRECT: off
+        CHROME_DRIVER: /usr/local/bin/chromedriver
       run: |
         pipenv run python manage.py test --keepdb --force-color
