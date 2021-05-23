@@ -23,3 +23,9 @@ class PostView(GenericViewSet,  # generic view functionality
     permission_classes = [TokenHasReadWriteScope]
     authentication_classes = [OAuth2Authentication]
     queryset = Post.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        print(request.data)
+        return super().create(request, *args, **kwargs)
+
+
