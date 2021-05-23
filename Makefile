@@ -20,6 +20,6 @@ test:
 	python manage.py test --keepdb
 
 test-unit:
-	python manage.py test --keepdb --patterns="*_spec.py"
+	python manage.py test --keepdb --pattern="*_spec.py"
 
 
