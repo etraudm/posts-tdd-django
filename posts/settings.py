@@ -155,3 +155,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_SSL_REDIRECT = env('SSL_REDIRECT')
 
 TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'oauth2': {
+            "type": "oauth2",
+            "authorizationUrl": "/oauth/token",
+            'in': 'header'
+        }
+    },
+}
