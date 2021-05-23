@@ -38,8 +38,8 @@ class PostAPITestCase(APITestCase):
         self.application.delete()
         self.test_user.delete()
 
-    def test_should_return_400_if_no_title_is_provided(self):
-        """ ensure view returns 400 if no name is provided """
+    def test_should_return_400_if_no_title_is_provided_post(self):
+        """ ensure view returns 400 if no name is provided post"""
         data = {
             'body': self.faker.paragraph(nb_sentences=3),
             'user': self.test_user.id
@@ -59,8 +59,29 @@ class PostAPITestCase(APITestCase):
             ]
         })
 
-    def test_should_return_400_if_no_body_is_provided(self):
-        """ ensure view returns 400 if no body is provided """
+    def test_should_return_400_if_no_title_is_provided_put(self):
+        """ ensure view returns 400 if no name is provided post"""
+        data = {
+            'body': self.faker.paragraph(nb_sentences=3),
+            'user': self.test_user.id
+        }
+        url = reverse('api-post-create', kwargs={'version': 'v1'})
+        response = self.client.post(self.url, data, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.data, {
+            "errors": [
+                {
+                    "field": "title",
+                    "message": [
+                        "This field is required."
+                    ]
+                }
+            ]
+        })
+
+    def test_should_return_400_if_no_body_is_provided_post(self):
+        """ ensure view returns 400 if no body is provided put """
         data = {
             'title': self.faker.text(max_nb_chars=150),
             'user': self.test_user.id
