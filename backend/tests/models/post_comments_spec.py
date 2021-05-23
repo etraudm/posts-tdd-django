@@ -29,7 +29,7 @@ class PostCommentsTestCase(TestCase):
         """" ensure post comment  __str__ returns a valid to string """
         mock_post_comment = mixer.blend(PostComments)
         self.assertEqual(str(mock_post_comment), '{}-{}'.format(mock_post_comment.id, mock_post_comment.body))
-    #
-    # def test_should_have_registered_in_admin(self):
-    #     """" ensure post model is registered in admin """
-    #     self.assertTrue(admin.site.is_registered(PostComment))
+
+    def test_should_have_registered_in_admin(self):
+        """" ensure comment model is registered in admin """
+        self.assertTrue(admin.site.is_registered(PostComments))
