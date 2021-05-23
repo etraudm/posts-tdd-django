@@ -20,14 +20,28 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 from rest_framework.routers import DefaultRouter
 
 handler500 = 'rest_framework.exceptions.server_error'
 handler400 = 'rest_framework.exceptions.bad_request'
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Posts API",
+      default_version='v1',
+      description="Api of Posts With TDD",
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^media/(.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'api/(?P<version>[v1|v2]+)/', include('backend.urls')),
     path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -16,6 +16,7 @@ pillow = "*"
 faker = "*"
 coverage = "*"
 mixer = "*"
+drf-yasg = "*"
 
 [dev-packages]
 autopep8 = "*"
