@@ -1,18 +1,16 @@
 import datetime
 
-import faker
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.urls import reverse
 from django.utils import timezone
 from faker import Faker
 from oauth2_provider.models import Application, AccessToken
 from oauth2_provider.settings import oauth2_settings
-from rest_framework.test import APIRequestFactory, APITestCase, APIClient
 from rest_framework import status
-from django.urls import reverse
+from rest_framework.test import APITestCase, APIClient
 
 
-class PostTestCase(APITestCase):
+class PostAPITestCase(APITestCase):
 
     def setUp(self) -> None:
         self.faker = Faker()

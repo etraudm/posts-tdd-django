@@ -40,9 +40,9 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/doc/', permanent=False), name='index'),
+    # path('', RedirectView.as_view(url='/doc/', permanent=False), name='index'),
     url(r'^media/(.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'api/(?P<version>[v1|v2]+)/', include('backend.urls')),
     path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('api-docs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
