@@ -13,4 +13,4 @@ class PostComments(TimestampableMixin, models.Model):
     body = models.TextField("Body", null=False, blank=False)
 
     def __str__(self):
-        return '{}-{}'.format(self.post_id, self.body)
+        return '{}-{}'.format(self.id, self.body)

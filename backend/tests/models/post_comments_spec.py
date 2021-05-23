@@ -25,10 +25,10 @@ class PostCommentsTestCase(TestCase):
         post_comment.save()
         self.assertEqual(PostComments.objects.count(), 1)
 
-    # def test_to_string_representation(self):
-    #     """" ensure __str__ returns a valid to string """
-    #     mock_post_comment = mixer.blend(PostComments)
-    #     self.assertEqual(str(mock_post), '{}-{}'.format(mock_post.post_id, mock_post.title))
+    def test_to_string_representation(self):
+        """" ensure post comment  __str__ returns a valid to string """
+        mock_post_comment = mixer.blend(PostComments)
+        self.assertEqual(str(mock_post_comment), '{}-{}'.format(mock_post_comment.id, mock_post_comment.body))
     #
     # def test_should_have_registered_in_admin(self):
     #     """" ensure post model is registered in admin """
