@@ -13,6 +13,9 @@ redgreenunittest = "*"
 djangorestframework = "*"
 django-oauth-toolkit = "*"
 pillow = "*"
+faker = "*"
+coverage = "*"
+mixer = "*"
 
 [dev-packages]
 

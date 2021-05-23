@@ -23,5 +23,5 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^media/(.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    # path('api/v1/', include('backend.urls')),
+    path('api/v1/', include('backend.urls')),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
