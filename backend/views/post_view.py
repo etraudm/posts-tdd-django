@@ -1,11 +1,6 @@
-from django.http import HttpResponse
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, OAuth2Authentication
-from oauth2_provider.views import ProtectedResourceView
-from rest_framework import viewsets
-from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, ListModelMixin, \
     DestroyModelMixin
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet
 
 from backend.models import Post
