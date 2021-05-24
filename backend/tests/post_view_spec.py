@@ -167,3 +167,18 @@ class PostAPITestCase(APITransactionTestCase):
         response = self.client.put(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+    def test_should_return_204_if_delete_success(self):
+        """ ensure view returns 204 if delete POST success """
+
+        post = Post()
+        post.title = self.faker.text(max_nb_chars=150)
+        post.body = self.faker.paragraph(nb_sentences=3)
+        post.user = self.test_user
+        post.save()
+
+        url = reverse('api-post-update-get-delete', kwargs={'version': 'v1', 'pk': str(post.post_id)})
+        response = self.client.delete(url, {}, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
