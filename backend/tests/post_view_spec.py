@@ -188,3 +188,13 @@ class PostAPITestCase(APITestCase):
             set(post.post_id.__str__() for post in posts)
         )
 
+    def test_get_detail_post(self):
+        """" ensure view returns a details of post """
+        post = mixer.blend(Post)
+        url = reverse('api-post-update-get-delete', kwargs={'version': 'v1', 'pk': str(post.post_id)})
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['post_id'],str(post.post_id))
+
