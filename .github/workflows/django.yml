@@ -36,7 +36,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pipenv
-        pipenv install
+        pipenv install -d
         chmod -R 777 /home/runner/work/posts-tdd-django/posts-tdd-django/utils/chromedriver.exe
       env:
         ROOT_FOLDER: posts_files
