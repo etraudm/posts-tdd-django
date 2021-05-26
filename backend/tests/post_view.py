@@ -14,6 +14,7 @@ from rest_framework.test import APITestCase, APIClient, APITransactionTestCase
 
 from backend.models import Post
 
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -25,6 +26,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+
 class PostAPITestCase(APITestCase):
 
     def setUp(self) -> None:
@@ -34,7 +36,7 @@ class PostAPITestCase(APITestCase):
         self.application = mixer.blend(Application,
                                        user=self.test_user,
                                        client_type=Application.CLIENT_CONFIDENTIAL,
-                                       authorization_grant_type=Application.GRANT_CLIENT_CREDENTIALS,
+                                       authorization_grant_type=Application.GRANT_PASSWORD,
                                        )
 
         oauth2_settings._SCOPES = ['read', 'write']
@@ -50,7 +52,7 @@ class PostAPITestCase(APITestCase):
         self.test_user.delete()
 
     def test_should_return_400_if_no_title_is_provided_post(self):
-        """ ensure view returns 400 if no name is provided post"""
+        """ ensure view returns 400 if no title is provided post"""
         data = {
             'body': self.faker.paragraph(nb_sentences=3),
             'user': self.test_user.id
@@ -71,7 +73,7 @@ class PostAPITestCase(APITestCase):
         })
 
     def test_should_return_400_if_no_title_is_provided_put(self):
-        """ ensure view returns 400 if no name is provided put"""
+        """ ensure view returns 400 if no title is provided put"""
         data = {
             'body': self.faker.paragraph(nb_sentences=3),
             'user': self.test_user.id
@@ -196,5 +198,4 @@ class PostAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['post_id'],str(post.post_id))
-
+            response.data['post_id'], str(post.post_id))

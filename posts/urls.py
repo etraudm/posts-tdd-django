@@ -25,6 +25,8 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
+from frontend import views
+
 handler500 = 'rest_framework.exceptions.server_error'
 handler400 = 'rest_framework.exceptions.bad_request'
 
@@ -36,11 +38,12 @@ schema_view = get_schema_view(
    ),
    public=True,
    permission_classes=(permissions.AllowAny,),
+   url='https://postdd.herokuapp.com/',
 )
 
 urlpatterns = [
+    path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
-    # path('', RedirectView.as_view(url='/doc/', permanent=False), name='index'),
     url(r'^media/(.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'api/(?P<version>[v1|v2]+)/', include('backend.urls')),
     path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
