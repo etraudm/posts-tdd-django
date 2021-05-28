@@ -8,7 +8,7 @@ from mixer.backend.django import mixer
 from oauth2_provider.models import Application, AccessToken
 from oauth2_provider.settings import oauth2_settings
 from rest_framework import status
-from rest_framework.test import APIClient, APITransactionTestCase
+from rest_framework.test import APIClient, APITransactionTestCase, APITestCase
 
 from backend.models import Post
 
@@ -25,10 +25,13 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-class PostAPITestCase(APITransactionTestCase):
+class PostAPITestCase(APITestCase):
+
+    def shortDescription(self):
+        doc = self.__str__() + ": " + self._testMethodDoc
+        return doc or None
 
     def setUp(self) -> None:
-        print(bcolors.OKGREEN + self._testMethodDoc + bcolors.ENDC)
         self.faker = Faker()
         self.test_user = mixer.blend(User)
         self.application = mixer.blend(Application,
@@ -48,6 +51,14 @@ class PostAPITestCase(APITransactionTestCase):
     def tearDown(self):
         self.application.delete()
         self.test_user.delete()
+
+    def test_restrict_route_posts(self):
+        """ ensure view returns 401 if wrong token is provided """
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer wrong_token')
+        url = reverse('api-post-create-list', kwargs={'version': 'v1'})
+        response = self.client.get(url, {}, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_should_return_400_if_no_title_is_provided_post(self):
         """ ensure view returns 400 if no title is provided post"""
