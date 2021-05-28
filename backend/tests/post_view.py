@@ -27,7 +27,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-class PostAPITestCase(APITestCase):
+class PostAPITestCase(APITransactionTestCase):
 
     def setUp(self) -> None:
         print(bcolors.OKGREEN + self._testMethodDoc + bcolors.ENDC)
