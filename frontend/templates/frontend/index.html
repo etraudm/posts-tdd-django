@@ -3,4 +3,5 @@
 {% block content %}
     {% include 'frontend/components/navbar.html' %}
     {% include 'frontend/components/login_modal.html' %}
+    <b-loading :is-full-page="isFullPage" v-model="isLoading" :can-cancel="false"></b-loading>
 {% endblock %}
