@@ -1,8 +1,6 @@
 import datetime
-import uuid
 
 from django.contrib.auth.models import User
-from django.db import transaction
 from django.urls import reverse
 from django.utils import timezone
 from faker import Faker
@@ -10,7 +8,7 @@ from mixer.backend.django import mixer
 from oauth2_provider.models import Application, AccessToken
 from oauth2_provider.settings import oauth2_settings
 from rest_framework import status
-from rest_framework.test import APITestCase, APIClient, APITransactionTestCase
+from rest_framework.test import APIClient, APITransactionTestCase
 
 from backend.models import Post
 

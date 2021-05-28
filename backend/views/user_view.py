@@ -1,19 +1,12 @@
-import json
-
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from drf_yasg.utils import swagger_auto_schema
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, OAuth2Authentication
-from rest_framework import serializers
-from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, ListModelMixin, \
-    DestroyModelMixin
+from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin
 from rest_framework.renderers import JSONRenderer
 from rest_framework.viewsets import GenericViewSet
 
-from backend.models import Post
 from backend.serializers import UserSerializer
-from backend.serializers.post_serializer import PostSerializer, PostSerializerCreate
-
 
 
 class UserView(GenericViewSet,  # generic view functionality
