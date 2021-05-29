@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Posts TDD</title>
-    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <link rel="stylesheet" href="{% static 'plugins/buefy/buefy.min.css' %}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
@@ -23,8 +23,8 @@
     {% block content %}{% endblock %}
 </div>
 
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+<script src="{% static 'plugins/vue/vue.js' %}"></script>
+<script src="{% static 'plugins/buefy/buefy.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script src="{% static 'js/index.js' %}?v=1.0"></script>
 </body>
