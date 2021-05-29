@@ -22,14 +22,8 @@
   ````
   
   ```` bash
-    pipenv install -d
+    pipenv install -d or python -m pipenv install -d
  	````
-  
-  Or
-  
-  ```` bash
-    python -m pipenv install -d
-  ````
   
  - Execute your tests with:
  
