@@ -13,14 +13,17 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import dj_database_url
 import environ
+from django.conf.global_settings import DATABASES
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 env = environ.Env(
     APP_DEBUG=(bool, False),
     SSL_REDIRECT=(bool, False),
-    ROOT_FOLDER=(str, 'posts_files')
+    ROOT_FOLDER=(str, 'static'),
+    DATABASE_URL=(str, 'sqlite:////' + BASE_DIR + '/db.sqlite3')
 )
 
 try:
@@ -102,11 +105,9 @@ WSGI_APPLICATION = 'posts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR + '/db.sqlite3',
-    }
+    'default': env.db('DATABASE_URL'),
 }
 
 # Password validation

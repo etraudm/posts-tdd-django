@@ -12,6 +12,7 @@ django-oauth-toolkit = "*"
 pillow = "*"
 drf-yasg = "*"
 whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 autopep8 = "*"
