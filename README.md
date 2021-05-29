@@ -17,10 +17,18 @@
  - Copy the file posts/.env.sample to posts/.env and configure you environment variables
 
  - Install dependencies
-  ```` python
-  pip install pipenv
-  pipenv install -d  or python -m pipenv install -d
+  ```` bash
+    pip install pipenv
   ````
+  
+  ```` bash
+    pipenv install -d
+ 	````
+  or
+  ```` bash
+    python -m pipenv install -d
+  ````
+  
  - Execute your tests with:
  ````
  python manage.py test
