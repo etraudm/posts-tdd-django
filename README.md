@@ -14,14 +14,17 @@
 
 #### How to Setup:
 
- - Copy the file posts/.env.sampple to posts/.env and configure you environment variables
+ - Copy the file posts/.env.sample to posts/.env and configure you environment variables
 
  - Install dependencies
   ```` python
   pip install pipenv
   pipenv install -d  or python -m pipenv install -d
   ````
- - Execute your tests with python manage.py test 
+ - Execute your tests with:
+ ````
+ python manage.py test
+ ````
 
 
 
