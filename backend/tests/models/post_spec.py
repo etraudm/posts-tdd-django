@@ -5,7 +5,6 @@ from faker import Faker
 from mixer.backend.django import mixer
 
 from backend.models.post import Post
-from backend.serializers.post_serializer import PostSerializer
 
 
 class PostTestCase(TestCase):
