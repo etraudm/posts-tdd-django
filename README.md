@@ -24,6 +24,7 @@
   ```` bash
     pipenv install -d
  	````
+  
   Or
   
   ```` bash
@@ -33,7 +34,7 @@
  - Execute your tests with:
  
  ```` bash
- python manage.py test
+   python manage.py test
  ````
 
 
