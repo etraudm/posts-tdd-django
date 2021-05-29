@@ -27,22 +27,22 @@ class PostsTestCase(LiveServerTestCase):
         self.browser.quit()
 
 
-    def test_should_login_with_username_and_password(self):
-        self.browser.get(self.live_server_url)
-        time.sleep(5)
-        btnLogin = self.browser.find_element_by_id('btn-open-modal-login')
-        btnLogin.click()
-        time.sleep(1)
-
-        password = self.browser.find_element_by_id('password-login')
-        username = self.browser.find_element_by_id('email-login')
-        btnSubmit = self.browser.find_element_by_id('btn-login')
-
-        username.send_keys(self.test_user.username)
-        password.send_keys(self.test_user.password)
-
-        btnSubmit.click()
-
-
-        self.browser.get(self.live_server_url)
+    # def test_should_login_with_username_and_password(self):
+    #     self.browser.get(self.live_server_url)
+    #     time.sleep(5)
+    #     btnLogin = self.browser.find_element_by_id('btn-open-modal-login')
+    #     btnLogin.click()
+    #     time.sleep(1)
+    #
+    #     password = self.browser.find_element_by_id('password-login')
+    #     username = self.browser.find_element_by_id('email-login')
+    #     btnSubmit = self.browser.find_element_by_id('btn-login')
+    #
+    #     username.send_keys(self.test_user.username)
+    #     password.send_keys(self.test_user.password)
+    #
+    #     btnSubmit.click()
+    #
+    #
+    #     self.browser.get(self.live_server_url)
 
