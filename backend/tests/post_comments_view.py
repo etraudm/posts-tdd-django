@@ -16,7 +16,7 @@ from backend.models import Post, PostComments
 class PostCommentsAPITestCase(APITestCase):
 
     def shortDescription(self):
-        doc = self.__str__()
+        doc = self.__str__() + ': '
         return doc or None
 
     def setUp(self) -> None:

@@ -19,7 +19,6 @@ class PostsTestCase(LiveServerTestCase):
         self.browser = webdriver.Chrome(
             executable_path=env('CHROME_DRIVER'),
             options=options)
-
         #mock user
         self.test_user: User = mixer.blend(User, password='123')
 
