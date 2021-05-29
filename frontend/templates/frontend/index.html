@@ -1,7 +1,60 @@
 {% extends 'frontend/base.html' %}
 
 {% block content %}
+
     {% include 'frontend/components/navbar.html' %}
     {% include 'frontend/components/login_modal.html' %}
+    {% verbatim %}
+    <div class="container">
+        <div class="rows justify-center">
+            <div class="column">
+                <b-field label="Title">
+                    <b-input id="post-title" v-model="post.title"></b-input>
+                </b-field>
+            </div>
+            <div class="column is-full">
+                <b-field label="Post message">
+                    <b-input id="post-body" maxlength="200" type="textarea" v-model="post.body"></b-input>
+                </b-field>
+            </div>
+            <div class="column text-right" style="margin-left: auto">
+                <b-button @click="savePost()"
+                          :disabled="post.body == '' || post.title == ''"
+                          label="Post"
+                          id="btn-save-post"
+                          type="is-primary"
+                          icon-pack="far"
+                          icon-left="paper-plane"></b-button>
+            </div>
+
+            <template v-if="skeleton">
+                <div class="column" style="border-bottom: 1px solid #dbdbdb;margin-bottom: 2px" v-for="n in 8">
+                    <article class="media boder-box">
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <b-skeleton active height="25px"></b-skeleton>
+                                    <b-skeleton height="15px" width="95%"></b-skeleton>
+                                    <b-skeleton height="15px" width="75%"></b-skeleton>
+                                    <b-skeleton height="15px" width="45%"></b-skeleton>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </template>
+            <template v-else>
+                <div class="column" v-for="post in postList">
+                    <b-message @close="confirmDeletePost(post.post_id)" :title="post.title" type="is-dark" has-icon
+                               icon="account"
+                               aria-close-label="Delete post">
+                        {{ post.body }}
+                    </b-message>
+                </div>
+            </template>
+        </div>
+    </div>
+    {% endverbatim %}
     <b-loading :is-full-page="isFullPage" v-model="isLoading" :can-cancel="false"></b-loading>
+
 {% endblock %}

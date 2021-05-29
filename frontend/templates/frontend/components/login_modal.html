@@ -5,6 +5,8 @@
         :destroy-on-hide="false"
         aria-role="dialog"
         aria-label="Example Modal"
+        :can-cancel="'x'"
+        id="modal-login"
         aria-modal>
     <template #default="props">
         <modal-form :value="formProps" @input="(form) => {formProps = form}"  @close="props.close" @submit="submitFormLogin"></modal-form>

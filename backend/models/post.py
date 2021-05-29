@@ -12,5 +12,8 @@ class Post(TimestampableMixin, models.Model):
     title = models.CharField("Post Title", max_length=150, null=False, blank=False)
     body = models.TextField("Body Title", null=False, blank=False)
 
+    class Meta:
+        ordering = ['-created_at']
+
     def __str__(self):
         return '{}-{}'.format(self.post_id, self.title)

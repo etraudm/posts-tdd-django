@@ -1,7 +1,6 @@
 from drf_yasg.utils import swagger_auto_schema
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, OAuth2Authentication
-from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, ListModelMixin, \
-    DestroyModelMixin
+from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
@@ -30,8 +29,6 @@ class PostCommentsView(GenericViewSet,  # generic view functionality
     def get_serializer_class(self):
         if hasattr(self, 'action_serializers'):
             return self.action_serializers.get(self.action, self.serializer_class)
-
-        return super(PostCommentsView, self).get_serializer_class()
 
     @swagger_auto_schema(tags=["Post Comments"])
     def create(self, request, *args, **kwargs):

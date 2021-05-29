@@ -30,8 +30,6 @@ class PostView(GenericViewSet,  # generic view functionality
         if hasattr(self, 'action_serializers'):
             return self.action_serializers.get(self.action, self.serializer_class)
 
-        return super(PostView, self).get_serializer_class()
-
     permission_classes = [TokenHasReadWriteScope]
     authentication_classes = [OAuth2Authentication]
     queryset = Post.objects.all()

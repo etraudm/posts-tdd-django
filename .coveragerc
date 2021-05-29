@@ -6,11 +6,16 @@ timid = True
 show_missing = False
 include = *.py
 omit =
-    tests.py
+    */wsgi.py
+    */asgi.py
+    */manage.py
+    */settings.py
+    */tests/*
+    */tests.py
     *_test.py
     *_tests.py
     */site-packages/*
     */migrations/*
 [html]
 title = Code Coverage
-directory = local_coverage_report
+directory = htmlcov

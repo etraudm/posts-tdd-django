@@ -18,12 +18,6 @@ class UserView(GenericViewSet,  # generic view functionality
     authentication_classes = [OAuth2Authentication]
     queryset = User.objects.all()
 
-    def get_serializer_class(self):
-        if hasattr(self, 'action_serializers'):
-            return self.action_serializers.get(self.action, self.serializer_class)
-
-        return super(UserView, self).get_serializer_class()
-
     @swagger_auto_schema(tags=["User"])
     def get_user(self, request, *args, **kwargs):
         """
