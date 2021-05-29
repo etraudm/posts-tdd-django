@@ -3,6 +3,9 @@
 
 [demo in heroku](https://postdd.herokuapp.com/)
 
+User: admin@admin.com \
+Password: admin
+
 ##### Use of dev tools for tests development 
 
 * [Coverage](https://coverage.readthedocs.io/en/coverage-5.5/)
