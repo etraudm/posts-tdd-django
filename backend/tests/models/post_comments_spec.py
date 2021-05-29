@@ -10,6 +10,10 @@ from backend.models.post import Post
 
 class PostCommentsTestCase(TestCase):
 
+    def shortDescription(self):
+        doc = self.__str__()
+        return doc or None
+
     def setUp(self) -> None:
         self.faker = Faker()
 

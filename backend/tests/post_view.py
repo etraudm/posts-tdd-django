@@ -28,7 +28,7 @@ class bcolors:
 class PostAPITestCase(APITestCase):
 
     def shortDescription(self):
-        doc = self.__str__() + ": " + self._testMethodDoc
+        doc = self.__str__()
         return doc or None
 
     def setUp(self) -> None:

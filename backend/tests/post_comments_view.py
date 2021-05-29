@@ -1,8 +1,6 @@
 import datetime
-import json
 
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
 from faker import Faker
@@ -10,13 +8,13 @@ from mixer.backend.django import mixer
 from oauth2_provider.models import Application, AccessToken
 from oauth2_provider.settings import oauth2_settings
 from rest_framework import status
-from rest_framework.test import APITransactionTestCase, APIClient
+from rest_framework.test import APIClient, APITransactionTestCase, APITestCase
 
-from backend.tests import bcolors
+from backend.models import Post
 
 
-class UserAPITestCase(APITransactionTestCase):
 
+class PostCommentsAPITestCase(APITestCase):
 
     def shortDescription(self):
         doc = self.__str__()
@@ -43,17 +41,10 @@ class UserAPITestCase(APITransactionTestCase):
         self.application.delete()
         self.test_user.delete()
 
-    def test_should_return_401_if_wrong_token_is_provided(self):
-        """ should return 401 if wrong token is provided """
-        self.client.credentials(HTTP_AUTHORIZATION='wrong token')
-        url = reverse('api-user-update-get', kwargs={'version': 'v1'})
-        response: HttpResponse = self.client.get(url, format='json')
+    def test_restrict_route_posts(self):
+        """ ensure view returns 401 if wrong token is provided """
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer wrong_token')
+        url = reverse('api-post-comments-create', kwargs={'version': 'v1'})
+        response = self.client.get(url, {}, format='json')
+
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
-    def test_should_return_user_data(self):
-        """ should return the logged user """
-
-        url = reverse('api-user-update-get', kwargs={'version': 'v1'})
-        response: HttpResponse = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(json.loads(response.content)['id'], self.test_user.id)

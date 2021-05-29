@@ -10,6 +10,10 @@ from backend.serializers.post_serializer import PostSerializer
 
 class PostTestCase(TestCase):
 
+    def shortDescription(self):
+        doc = self.__str__()
+        return doc or None
+
     def setUp(self) -> None:
         self.faker = Faker()
 
