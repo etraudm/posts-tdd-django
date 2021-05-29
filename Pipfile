@@ -10,11 +10,11 @@ gunicorn = "*"
 djangorestframework = "*"
 django-oauth-toolkit = "*"
 pillow = "*"
+drf-yasg = "*"
 
 [dev-packages]
 autopep8 = "*"
 mixer = "*"
-drf-yasg = "*"
 coverage = "*"
 faker = "*"
 redgreenunittest = "*"
