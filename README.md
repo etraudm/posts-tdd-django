@@ -1,5 +1,5 @@
 # posts-tdd-django
-## Application with TDD
+## Django Application with TDD
 
 [demo in heroku](https://postdd.herokuapp.com/)
 
