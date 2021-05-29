@@ -10,7 +10,7 @@ from oauth2_provider.settings import oauth2_settings
 from rest_framework import status
 from rest_framework.test import APIClient, APITransactionTestCase, APITestCase
 
-from backend.models import Post
+from backend.models import Post, PostComments
 
 
 class PostCommentsAPITestCase(APITestCase):
@@ -82,4 +82,14 @@ class PostCommentsAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['post'], data['post'])
 
+    def test_should_return_comment_list_from_given_post(self):
+        """ ensure view returns a list of comments of post """
 
+        post = mixer.blend(Post)
+        comment_list = mixer.cycle(5).blend(PostComments, post=post)
+
+        url = reverse('api-post-comments-list', kwargs={'version': 'v1', 'pk': str(post.post_id)})
+        response = self.client.get(url, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(comment_list), len(response.data))
