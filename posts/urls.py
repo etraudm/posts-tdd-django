@@ -31,21 +31,22 @@ handler500 = 'rest_framework.exceptions.server_error'
 handler400 = 'rest_framework.exceptions.bad_request'
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Posts API",
-      default_version='v1',
-      description="Api of Posts With TDD",
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
-   url='https://postdd.herokuapp.com/',
+    openapi.Info(
+        title="Posts API",
+        default_version='v1',
+        description="Api of Posts With TDD",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+    url='https://postdd.herokuapp.com/',
 )
 
 urlpatterns = [
     path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
-    url(r'^media/(.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'api/(?P<version>[v1|v2]+)/', include('backend.urls')),
     path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api-docs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+]
