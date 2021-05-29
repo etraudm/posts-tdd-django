@@ -11,6 +11,7 @@ djangorestframework = "*"
 django-oauth-toolkit = "*"
 pillow = "*"
 drf-yasg = "*"
+whitenoise = "*"
 
 [dev-packages]
 autopep8 = "*"
