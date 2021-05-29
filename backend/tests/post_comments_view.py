@@ -69,4 +69,17 @@ class PostCommentsAPITestCase(APITestCase):
             ]
         })
 
+    def test_should_return_201_if_success_post(self):
+        """ ensure view returns 201 if success post """
+        data = {
+            'body': self.faker.paragraph(nb_sentences=3),
+            'user': self.test_user.id,
+            'post': mixer.blend(Post).post_id
+        }
+        url = reverse('api-post-comments-create', kwargs={'version': 'v1'})
+        response = self.client.post(url, data, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['post'], data['post'])
+
 
